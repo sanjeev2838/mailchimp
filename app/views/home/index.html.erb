@@ -1,0 +1,178 @@
+<!-- Jumbotron -->
+<div class="jumbotron">
+  <div class="container">
+
+    <!-- Intro -->
+    <div class="row">
+      <div class="col-sm-10 col-sm-offset-1">
+        <h1>Reach out to the world</h1>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet velit condimentum, viverra sapien eget, tempus ante. </p>
+      </div>
+    </div> <!-- End intro -->
+
+    <!-- Assets (How to's) -->
+    <div class="row assets hidden-xs">
+      <div class="col-sm-4">
+        <div class="asset">
+          <span class="fa fa-picture-o asset-ico-a"></span>
+          <h3>Get the template</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="asset">
+          <span class="fa fa-file-text asset-ico-b"></span>
+          <h3>Fill copy</h3>
+          <p>Duis ut mollis lacus. Mauris ultrices sollicitudin lectus non semper.</p>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="asset">
+          <span class="fa fa-rocket asset-ico-c"></span>
+          <h3>Launch</h3>
+          <p>Maecenas ornare nisl lacus, eu mattis lectus vulputate quis.</p>
+        </div>
+      </div>
+    </div> <!-- End assets -->
+
+    <!-- Scroll-to-cta prompt -->
+    <div class="row">
+      <p class="page-scroll scroll-to-cta">
+        <a href="tomato#signup">
+          Get early VIP invite <i class="fa fa-angle-double-down fa-lg animated"></i>
+        </a>
+      </p>
+    </div> <!-- End scroll-to-cta prompt -->
+
+  </div>
+</div> <!-- End Jumbotron -->
+
+<!-- Main Content -->
+<div class="container">
+
+  <!-- Features -->
+  <div class="features">
+
+    <!-- Section header -->
+    <div class="row section-header">
+      <div class="col-sm-10 col-sm-offset-1">
+        <h1>What you can expect of Launcht</h1>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet velit condimentum, viverra sapien eget, tempus ante. </p>
+      </div>
+    </div> <!-- End section header -->
+
+    <!-- First row of features -->
+    <div class="row">
+      <div class="col-sm-6">
+        <h3><i class="fa fa-money"></i> Save time &amp; money</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id enim suscipit, dignissim nisl a, bibendum velit. Donec quis nulla mattis turpis rhoncus malesuada. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+      </div>
+      <div class="col-sm-6">
+        <h3><i class="fa fa-comments-o"></i> Generate the right buzz</h3>
+        <p>Sed pharetra laoreet dolor, imperdiet bibendum erat lobortis ut. Sed ut orci ac tellus volutpat rutrum consequat sit amet nisi. Ut aliquam eu felis a ultricies. Aliquam congue placerat scelerisque. Proin vel nibh a leo auctor sagittis.</p>
+      </div>
+    </div> <!-- End first row of features -->
+
+    <!-- Second row of features -->
+    <div class="row">
+      <div class="col-sm-6">
+        <h3><i class="fa fa-users"></i> Attract qualified leads</h3>
+        <p>Proin vel nibh a leo auctor sagittis. Suspendisse vitae urna nec leo fermentum rutrum. Maecenas id rutrum neque. Maecenas pellentesque vitae massa nec consectetur. Morbi at ultrices ante, nec sodales enim.</p>
+      </div>
+      <div class="col-sm-6">
+        <h3><i class="fa fa-dot-circle-o"></i> Have a single purpose</h3>
+        <p>Cras pulvinar vel lacus vehicula aliquet. Vivamus vitae nibh justo. Mauris in nisi non nisl feugiat luctus ut et massa. Sed condimentum turpis quis bibendum blandit. Vestibulum ut gravida risus. </p>
+      </div>
+    </div> <!-- End second row of benefits -->
+
+  </div> <!-- End benefits -->
+
+  <!-- Signup area (main call-to-action) -->
+  <div id="signup">
+
+    <!-- Section header -->
+    <div class="row section-header">
+      <div class="col-sm-10 col-sm-offset-1">
+        <h1>Want an effective launch?</h1>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet velit condimentum, viverra sapien eget, tempus ante. </p>
+      </div>
+    </div> <!-- End section header -->
+
+    <!-- Signup panel area -->
+    <div class="row">
+      <% if notice.present? %>
+          <p class="notice alert alert-success " id="flash_notice"><%= notice %></p>
+          <%= javascript_tag "setTimeout(function(){ $('#flash_notice').remove(); }, 5000);" %>
+      <% end %>
+      <% if alert.present? %>
+          <p class="alert alert-danger" id="flash_errors" ><%= alert %></p>
+          <%= javascript_tag "setTimeout(function(){ $('#flash_errors').remove();}, 5000);" %>
+      <% end %>
+
+      <div class="col-sm-8 col-sm-offset-2">
+
+        <!-- Panel -->
+        <div class="panel panel-default">
+          <div class="row panel-body">
+            <div class="col-xs-10 col-xs-offset-1">
+
+              <!-- form for email subscription-->
+
+              <!-- Signup form -->
+
+
+
+              <% flash[:error] = flash[:errors] = flash[:notice] = nil %>
+
+              <%= form_tag(controller:"home", action: "subscribe", method: "post", class: "form-inline text-center", role: "form") do %>
+                  <p>Sign up for early VIP invite:</p>
+                  <div class="row">
+                    <div class="form-group col-sm-7">
+                      <label class="sr-only" for="formInputEmail">Email address</label>
+                      <%= email_field(:email,:address,class:"form-control input-lg", placeholder: "Enter email ", required:"" ) %>
+                    </div>
+                    <div class="col-sm-5">
+                      <%= submit_tag("Subscribe",class:"btn btn-primary btn-lg") %>
+                    </div>
+
+                  </div>
+                  <p class="no-spam">*We will never share, rent, or sell your email address to anyone, ever.</p>
+              <% end %>
+            </div>
+          </div>
+        </div> <!-- End panel -->
+
+      </div>
+    </div> <!-- End signup panel area -->
+
+  </div> <!-- End signup area -->
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="row">
+      <div class="col-sm-5">
+        <img class="footer-logo" src="assets/logos/footer-logo.png" alt="logo">
+        <p>
+          We want to explore. We're curious people. Look back over history, people have put their lives at stake to go out and explore... We believe in what we're doing. Now it's time to go.
+        </p>
+        <p class="copyright">&copy; 2014 Launcht</p>
+      </div>
+      <div class="col-sm-3 col-sm-offset-1 col-md-offset-1">
+        <ul class="link-list">
+          <li class="heading">Conect with us</li>
+          <li><a href="tomato#"><i class="fa fa-tumblr-square fa-lg"></i> Blog</a></li>
+          <li><a href="tomato#"><i class="fa fa-twitter-square fa-lg"></i> Twitter</a></li>
+          <li><a href="tomato#"><i class="fa fa-facebook-square fa-lg"></i> Facebook</a></li>
+        </ul>
+      </div>
+      <div class="col-sm-3">
+        <ul class="link-list">
+          <li class="heading">Get in touch</li>
+          <li><a href="mailto:hi@copylaunch.me">hi@launcht.template</a></li>
+          <li>1(888)555-1234</li>
+        </ul>
+      </div>
+    </div>
+  </div> <!-- End footer -->
+
+</div> <!-- End main content -->
