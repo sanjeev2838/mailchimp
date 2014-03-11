@@ -10,9 +10,20 @@ class HomeController < ApplicationController
         @gb.lists.subscribe({:id => '696cd3b1d1' ,
                              :email => {:email => params[:email][:address]},
                              :double_optin => false})
-        redirect_to root_url, :notice => 'successfully subcscribed  to the list'
+        respond_to do |format|
+          # format.html { redirect_to root_url, :notice => 'successfully subcscribed  to the list' }
+          format.json{
+          render :json => {:message => "successfully subscribed to the list"}
+        }
+        end
       rescue Gibbon::MailChimpError => e
-        redirect_to root_url, :alert => e.message
+        respond_to do |format|
+          # format.html {redirect_to root_url, :alert => e.message } 
+        format.json{
+          render :json => {:message => e.message}
+        }
+        end
+        
       end
     else
 

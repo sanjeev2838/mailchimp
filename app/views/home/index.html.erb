@@ -108,6 +108,9 @@
           <p class="alert alert-danger" id="flash_errors" ><%= alert %></p>
           <%= javascript_tag "setTimeout(function(){ $('#flash_errors').remove();}, 5000);" %>
       <% end %>
+      
+      <% flash[:error] = flash[:errors] = flash[:notice] = nil %>
+
 
       <div class="col-sm-8 col-sm-offset-2">
 
@@ -118,11 +121,7 @@
 
               <!-- form for email subscription-->
 
-              <!-- Signup form -->
-
-
-
-              <% flash[:error] = flash[:errors] = flash[:notice] = nil %>
+              <!-- Signup form -->  
 
               <%= form_tag(controller:"home", action: "subscribe", id:"sub_form", method: "post", class: "form-inline text-center", role: "form") do %>
                   <p>Sign up for early VIP invite:</p>
@@ -184,7 +183,7 @@
             url: frm.attr('action'),
             data: frm.serialize(),
             success: function (data) {
-                alert(data);
+                alert(data.message);
             }
         });
 
