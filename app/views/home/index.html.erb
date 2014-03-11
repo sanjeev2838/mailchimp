@@ -124,7 +124,7 @@
 
               <% flash[:error] = flash[:errors] = flash[:notice] = nil %>
 
-              <%= form_tag(controller:"home", action: "subscribe", method: "post", class: "form-inline text-center", role: "form") do %>
+              <%= form_tag(controller:"home", action: "subscribe", id:"sub_form", method: "post", class: "form-inline text-center", role: "form") do %>
                   <p>Sign up for early VIP invite:</p>
                   <div class="row">
                     <div class="form-group col-sm-7">
@@ -176,3 +176,18 @@
   </div> <!-- End footer -->
 
 </div> <!-- End main content -->
+<script type="text/javascript">
+    var frm = $('form:eq(0)');
+    frm.submit(function (ev) {
+        $.ajax({
+            type: frm.attr('method'),
+            url: frm.attr('action'),
+            data: frm.serialize(),
+            success: function (data) {
+                alert(data);
+            }
+        });
+
+        ev.preventDefault();
+    });
+</script>

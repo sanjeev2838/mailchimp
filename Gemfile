@@ -15,8 +15,8 @@ end
 
 gem 'gibbon'
 gem 'rails_12factor', group: :production
-gem 'pg'
-
+#gem 'pg'
+gem 'sqlite3'
 # gem 'unicorn'
 # gem 'capistrano', group: :development
 # gem 'debugger', group: [:development, :test]
