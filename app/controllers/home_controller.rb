@@ -13,7 +13,7 @@ class HomeController < ApplicationController
         respond_to do |format|
           # format.html { redirect_to root_url, :notice => 'successfully subcscribed  to the list' }
           format.json{
-          render :json => {:message => "successfully subscribed to the list"}
+          render :json => {:message => " Thank you for your interest in our beta program. You will receive an email when your account is ready. You are now on our VIP list."}
         }
         end
       rescue Gibbon::MailChimpError => e
