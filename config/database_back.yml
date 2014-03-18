@@ -18,3 +18,13 @@ production:
   encoding: unicode
   database: development
   pool: 5
+
+# postgres settings
+development:
+  adapter: postgresql
+  host: localhost
+  encoding: unicode
+  database: mailchimp_dev
+  user: mailchimp
+  password: password
+  pool: 5

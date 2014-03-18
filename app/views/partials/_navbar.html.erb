@@ -1,12 +1,25 @@
 <!-- Navbar -->
 <div class="navbar navbar-default navbar-fixed-top">
   <div class="container page-scroll">
-    <a class="main-logo navbar-left" href="tomato#home">Launcht</a>
+
+    <!--#todo refactor it as  root_url helper-->
+    <% if user_signed_in? %>
+        <%= link_to "Launcht", dashboard_index_path, class:"main-logo navbar-left" %>
+    <% else %>
+        <%= link_to "Launcht", root_path, class:"main-logo navbar-left" %>
+    <% end %>
+
     <p class="navbar-text navbar-right">
         <span class="hidden-xs">
-          Already invited? <a class="btn btn-default" href="tomato#">Sign in</a>
+          Already invited?
+          <% if user_signed_in? %>
+             Logged as <strong><%= current_user.email.split('@')[0] %></strong>
+              <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+          <% else %>
+            <%= link_to "Sign in", new_user_session_path, :class => 'btn btn-default'  %>
+          <% end %>
         </span>
-      <a href="tomato#" class="btn btn-default btn-lg visible-xs">
+      <a href="#" class="btn btn-default btn-lg visible-xs">
         <i class="fa fa-sign-in"></i>
       </a>
     </p>

@@ -4,8 +4,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :setup_gbapi
 
+  def after_sign_in_path_for(resource)
+    dashboard_index_path
+  end
+
+
   def setup_gbapi
-    @gb = Gibbon::API.new("f6e60f57e590c4f2f6ee04e7a23342d9-us3")
-    @list = @gb.lists.list({:filters => {:list_name => "Insurance"}})
+    @gb = Gibbon::API.new(ENV["MAILCHIMP_APIKEY"])
+    @list = @gb.lists.list({:filters => {:list_name => ENV["MAILCHIMP_LIST_NAME"]}})
   end
 end

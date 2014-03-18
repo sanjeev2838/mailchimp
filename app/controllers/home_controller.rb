@@ -7,7 +7,7 @@ class HomeController < ApplicationController
     if ! params[:email][:address].blank?
       begin
         #todo add exception later on
-        @gb.lists.subscribe({:id => '696cd3b1d1' ,
+        @gb.lists.subscribe({:id => ENV["MAILCHIMP_LIST_ID"] ,
                              :email => {:email => params[:email][:address]},
                              :double_optin => false})
         respond_to do |format|
@@ -23,7 +23,6 @@ class HomeController < ApplicationController
           render :json => {:message => e.message}
         }
         end
-        
       end
     else
 
